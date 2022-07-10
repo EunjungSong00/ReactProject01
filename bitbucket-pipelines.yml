@@ -1,0 +1,77 @@
+definitions:
+  services:
+    docker:
+      memory: 2048
+
+Test: &Test
+  step:
+    name: Run Test
+    image: node:10.8.0
+    caches:
+      - node
+    script:
+      - npm install
+      - npm run build
+
+Build: &Build
+  step:
+    name: Build
+    image: google/cloud-sdk:latest
+    script:
+      - echo $HANDLE_GCLOUD_KEY_FILE | base64 -d > ./gcloud-api-key.json
+      - export TAG_VERSION=1.0.$BITBUCKET_BUILD_NUMBER
+      - export IMAGE_NAME=$GCLOUD_HOSTNAME/$HANDLE_GCLOUD_PROJECT_ID/$PROJECT_NAME:$TAG_VERSION
+      - gcloud auth activate-service-account $HANDLE_GCLOUD_SERVICE_USER --key-file=gcloud-api-key.json
+      - gcloud config set account $HANDLE_GCLOUD_SERVICE_USER
+      - gcloud config set project $HANDLE_GCLOUD_PROJECT_ID
+      - gcloud auth configure-docker
+      - docker build -t $IMAGE_NAME .
+      - docker push $IMAGE_NAME
+    services:
+      - docker
+
+Deploy-Dev: &Deploy-Dev
+  step:
+    name: Deploy (Dev)
+    deployment: dev
+    trigger: manual
+    script:
+      - export TAG_VERSION=1.0.$BITBUCKET_BUILD_NUMBER
+      - sed -i s/PROJECT_NAME/$PROJECT_NAME/g source/k8s/deployment.yml
+      - sed -i s/PROJECT_PORT/$PROJECT_PORT/g source/k8s/deployment.yml
+      - sed -i s/TAG_VERSION/$TAG_VERSION/g source/k8s/deployment.yml
+      - pipe: atlassian/google-gke-kubectl-run:1.3.1
+        variables:
+          KEY_FILE: $HANDLE_GCLOUD_KEY_FILE
+          PROJECT: $HANDLE_GCLOUD_PROJECT_ID
+          COMPUTE_ZONE: $GCLOUD_ZONE
+          CLUSTER_NAME: $HANDLE_GCLOUD_DEV_CLUSTER
+          KUBECTL_COMMAND: 'apply'
+          RESOURCE_PATH: 'source/k8s/deployment.yml'
+
+Deploy: &Deploy
+  step:
+    name: Deploy (Prod)
+    deployment: production
+    trigger: manual
+    script:
+      - export TAG_VERSION=1.0.$BITBUCKET_BUILD_NUMBER
+      - sed -i s/PROJECT_NAME/$PROJECT_NAME/g source/k8s/deployment.yml
+      - sed -i s/PROJECT_PORT/$PROJECT_PORT/g source/k8s/deployment.yml
+      - sed -i s/TAG_VERSION/$TAG_VERSION/g source/k8s/deployment.yml
+      - pipe: atlassian/google-gke-kubectl-run:1.3.1
+        variables:
+          KEY_FILE: $HANDLE_GCLOUD_KEY_FILE
+          PROJECT: $HANDLE_GCLOUD_PROJECT_ID
+          COMPUTE_ZONE: $GCLOUD_ZONE
+          CLUSTER_NAME: $HANDLE_GCLOUD_PROD_CLUSTER
+          KUBECTL_COMMAND: 'apply'
+          RESOURCE_PATH: 'source/k8s/deployment.yml'
+
+pipelines:
+  branches:
+    master:
+      #      - <<: *Test
+      - <<: *Build
+      # - <<: *Deploy-Dev
+      - <<: *Deploy

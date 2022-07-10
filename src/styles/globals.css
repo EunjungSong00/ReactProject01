@@ -1,0 +1,368 @@
+html,
+body {
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+  font-family: 'NotoSansKR-Regular', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+*{
+    box-sizing: border-box;
+    /*!* This timing applies on the way IN *!*/
+    /*transition-timing-function: ease-out;*/
+
+    /*!* A litttttle slower on the way in *!*/
+    /*transition: 0.25s;*/
+}
+@font-face {
+  font-family: 'NotoSansKR-Thin';
+  font-weight: 100;
+  src: url('/fonts/NotoSansKR-Thin.eot') format('embedded-opentype'),
+      url('/fonts/NotoSansKR-Thin.otf') format('opentype'),
+      url('/fonts/NotoSansKR-Thin.ttf') format('truetype'),
+      url('/fonts/NotoSansKR-Thin.woff') format('woff'),
+      url('/fonts/NotoSansKR-Thin.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'NotoSansKR-Light';
+  font-weight: 300;
+  src: url('/fonts/NotoSansKR-Light.eot') format('embedded-opentype'),
+      url('/fonts/NotoSansKR-Light.otf') format('opentype'),
+      url('/fonts/NotoSansKR-Light.ttf') format('truetype'),
+      url('/fonts/NotoSansKR-Light.woff') format('woff'),
+      url('/fonts/NotoSansKR-Light.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'NotoSansKR-Regular';
+  font-weight: 400;
+  src: url('/fonts/NotoSansKR-Regular.eot') format('embedded-opentype'),
+      url('/fonts/NotoSansKR-Regular.otf') format('opentype'),
+      url('/fonts/NotoSansKR-Regular.ttf') format('truetype'),
+      url('/fonts/NotoSansKR-Regular.woff') format('woff'),
+      url('/fonts/NotoSansKR-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'NotoSansKR-Medium';
+  font-weight: 500;
+  src: url('/fonts/NotoSansKR-Medium.eot') format('embedded-opentype'),
+      url('/fonts/NotoSansKR-Medium.otf') format('opentype'),
+      url('/fonts/NotoSansKR-Medium.ttf') format('truetype'),
+      url('/fonts/NotoSansKR-Medium.woff') format('woff'),
+      url('/fonts/NotoSansKR-Medium.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'NotoSansKR-Bold';
+  font-weight: 700;
+  src: url('/fonts/NotoSansKR-Bold.eot') format('embedded-opentype'),
+      url('/fonts/NotoSansKR-Bold.otf') format('opentype'),
+      url('/fonts/NotoSansKR-Bold.ttf') format('truetype'),
+      url('/fonts/NotoSansKR-Bold.woff') format('woff'),
+      url('/fonts/NotoSansKR-Bold.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'NotoSansKR-Black';
+  font-weight: 900;
+  src: url('/fonts/NotoSansKR-Black.eot') format('embedded-opentype'),
+      url('/fonts/NotoSansKR-Black.otf') format('opentype'),
+      url('/fonts/NotoSansKR-Black.ttf') format('truetype'),
+      url('/fonts/NotoSansKR-Black.woff') format('woff'),
+      url('/fonts/NotoSansKR-Black.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Pretendard-Regular';
+    font-weight: 400;
+    src: url('/fonts/pretendard/Pretendard-Regular.otf') format('opentype'),
+         url('/fonts/pretendard/Pretendard-Regular.ttf') format('truetype'),
+         url('/fonts/pretendard/Pretendard-Regular.woff') format('woff'),
+         url('/fonts/pretendard/Pretendard-Regular.woff2') format('woff2');
+}
+
+
+@font-face {
+    font-family: 'Pretendard-Bold';
+    font-weight: 700;
+    src: url('/fonts/pretendard/Pretendard-Bold.otf') format('opentype'),
+    url('/fonts/pretendard/Pretendard-Bold.ttf') format('truetype'),
+    url('/fonts/pretendard/Pretendard-Bold.woff') format('woff'),
+    url('/fonts/pretendard/Pretendard-Bold.woff2') format('woff2');
+}
+
+
+@font-face {
+    font-family: 'Pretendard-ExtraBold';
+    font-weight: 800;
+    src: url('/fonts/pretendard/Pretendard-ExtraBold.otf') format('opentype'),
+    url('/fonts/pretendard/Pretendard-ExtraBold.ttf') format('truetype'),
+    url('/fonts/pretendard/Pretendard-ExtraBold.woff') format('woff'),
+    url('/fonts/pretendard/Pretendard-ExtraBold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'NanumSquareExtraBold';
+    font-weight: normal;
+    src: url('/fonts/nanumsquare/NanumSquareEB.otf') format('opentype'),
+    url('/fonts/nanumsquare/NanumSquareEB.ttf') format('truetype'),
+    url('/fonts/nanumsquare/NanumSquareEB.woff') format('woff');
+}
+.swiper {
+    width: 100%;
+    height: 100vh;
+}
+.slider .swiper-slide {
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+}
+
+.swiper-wrapper{
+    -webkit-transform-style: preserve-3d;
+}
+
+.swiper-pagination-bullet {
+    background: #fff !important;
+    margin: 20px 0 !important;
+}
+
+.swiper-slide:nth-child(1n) {
+    height: auto;
+    background: #007aff;
+}
+
+/* FIXME: 모바일용 동영상 크기 필요 */
+@media only screen and (max-width: 460px){
+    .swiper {
+        /*height:auto;*/
+        /*min-height: 100%;*/
+    }
+    .swiper-slide:nth-child(1n) {
+        height: 100vh;
+    }
+}
+
+.swiper-pagination-vertical.swiper-pagination-bullets, .swiper-vertical>.swiper-pagination-bullets {
+    right: 20%!important;
+}
+
+@media only screen and (max-width: 1658px){
+    .swiper-pagination-vertical.swiper-pagination-bullets, .swiper-vertical>.swiper-pagination-bullets {
+        right: 15% !important;
+    }
+}
+
+
+@media only screen and (max-width: 1308px){
+    .swiper-pagination-vertical.swiper-pagination-bullets, .swiper-vertical>.swiper-pagination-bullets {
+        right: 10% !important;
+    }
+
+}
+
+@media only screen and (max-width: 1200px) {
+    .swiper-pagination-vertical.swiper-pagination-bullets, .swiper-vertical > .swiper-pagination-bullets {
+        right: 10px !important;
+    }
+}
+
+@media only screen and (max-width: 1024px){
+    .swiper-pagination-vertical.swiper-pagination-bullets, .swiper-vertical>.swiper-pagination-bullets {
+        right: 10px !important;
+    }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+    height: 100%;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/* input 기본 스타일 초기화 */
+input {
+  /* -webkit-appearance: none; */
+  -moz-appearance: none;
+  /* appearance: none; */
+}
+/* IE10 이상에서 input box 에 추가된 지우기 버튼 제거 */
+input::-ms-clear {
+  display: none;
+}
+/* input type number 에서 화살표 제거 */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+/* Select box 스타일 초기화 */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+/* IE 에서 Select box 화살표 제거 */
+select::-ms-expand {
+  display: none;
+}
+
+
+img {
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    -ms-interpolation-mode: nearest-neighbor;
+    image-rendering: crisp-edges;
+    transform: translateZ(0);
+
+    /*image-rendering: -moz-auto;*/
+    /*image-rendering: -o-auto;*/
+    /*image-rendering: -webkit-optimize-contrast;*/
+    /*-ms-interpolation-mode: nearest-neighbor;*/
+    /*image-rendering: auto;*/
+    /*transform: translateZ(0);*/
+
+}
+
+/* firefox */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+input[type='password']::-ms-reveal,
+input[type='password']::-ms-clear {
+  display: none;
+}
