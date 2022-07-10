@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+    <defs>
+        <style>
+            .cls-2{fill:#fff}
+        </style>
+    </defs>
+    <g id="ico_instagram" opacity="0.5" transform="translate(-258 -1245)">
+        <circle id="타원_5" cx="18" cy="18" r="18" transform="translate(258 1245)"/>
+        <g id="그룹_9" transform="translate(1.568 972.445)">
+            <g id="그룹_9-2" transform="translate(269.685 285.808)">
+                <path id="패스_20" d="M327.117 347.734a4.495 4.495 0 1 1 4.495-4.495 4.5 4.5 0 0 1-4.495 4.495zm0-7.493a3 3 0 1 0 3 3 3 3 0 0 0-3-3.001z" class="cls-2" transform="translate(-322.622 -338.744)"/>
+            </g>
+            <g id="그룹_10" transform="translate(265.432 281.555)">
+                <path id="패스_21" d="M278.361 299.051H270a4.573 4.573 0 0 1-4.567-4.567v-8.362a4.573 4.573 0 0 1 4.567-4.567h8.362a4.572 4.572 0 0 1 4.567 4.567v8.362a4.572 4.572 0 0 1-4.568 4.567zm-8.362-16a3.074 3.074 0 0 0-3.071 3.071v8.362a3.074 3.074 0 0 0 3.072 3.071h8.362a3.074 3.074 0 0 0 3.071-3.071v-8.362a3.074 3.074 0 0 0-3.071-3.071z" class="cls-2" transform="translate(-265.432 -281.555)"/>
+            </g>
+            <g id="그룹_11" transform="translate(277.649 284.454)">
+                <circle id="타원_6" cx="1.033" cy="1.033" r="1.033" class="cls-2" transform="matrix(0.122, -0.993, 0.993, 0.122, 0, 2.051)"/>
+            </g>
+        </g>
+    </g>
+</svg>
